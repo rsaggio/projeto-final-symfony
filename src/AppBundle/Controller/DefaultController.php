@@ -14,7 +14,8 @@ class DefaultController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $texto = "<h1>Olá Mundo</h1>";
-        return new Response($texto);
+        $texto = "Olá Mundo";
+        $dados = ["texto" => $texto];
+        return $this->render("imovel/lista.html.twig", $dados);
     }
 }

@@ -25,6 +25,7 @@ class CadastroImovelForm extends AbstractType
 
         $builder->add('titulo', TextType::class)
             ->add('tamanho', TextType::class)
+            ->add('foto', FileType::class, array('label' => 'Selecione uma foto'))
             ->add('preco', MoneyType::class)
             ->add('tipo', ChoiceType::class,array (
                 'choices' => array(

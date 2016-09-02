@@ -3,6 +3,7 @@
 namespace AppBundle\Controller;
 
 use AppBundle\Form\CadastroImovelForm;
+use AppBundle\Service\UploadFileService;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Request;
@@ -50,6 +51,15 @@ class ImovelController extends Controller
         if($form->isSubmitted() && $form->isValid()) {
 
             $imovel = $form->getData();
+
+            $foto = $imovel->getFoto();
+
+            /* Extrair para parâmetro mais para frente na parte de injeção de dependencia */
+            $diretorio = $this->get('kernel')->getRootDir()."\..\web\uploads";
+
+            $service = new UploadFileService($diretorio);
+            $caminho = $service->upload($foto);
+            $imovel->setFoto($caminho);
 
             $imovelRepository->save($imovel);
 

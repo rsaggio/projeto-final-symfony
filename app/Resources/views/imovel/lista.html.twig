@@ -9,6 +9,7 @@
 {% for imovel in imoveis %}
     <div>
         <h2>{{imovel.titulo}}</h2>
+        <img src="{{ asset('/uploads/'~imovel.foto) }}" alt="{{imovel.titulo}}">
         <p>Tipo do imovel: {{imovel.tipo}}</p>
         <p>Tamanho: {{imovel.tamanho}}</p>
         <p>Preço: R$ {{imovel.preco}}</p>

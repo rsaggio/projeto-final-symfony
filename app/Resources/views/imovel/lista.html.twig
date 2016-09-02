@@ -1,1 +1,10 @@
-<h1>{{ texto }}</h1>
+<h1>Lista de imóveis</h1>
+
+{% for imovel in imoveis %}
+    <div>
+        <h2>{{imovel.titulo}}</h2>
+        <p>Tipo do imovel: {{imovel.tipo}}</p>
+        <p>Tamanho: {{imovel.tamanho}}</p>
+        <p>Preço: R$ {{imovel.preco}}</p>
+    </div>
+{% endfor %}

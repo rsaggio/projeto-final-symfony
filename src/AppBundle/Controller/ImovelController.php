@@ -19,8 +19,9 @@ class ImovelController extends Controller
      */
     public function indexAction(Request $request)
     {
-        $texto = "Listagem de imóveis";
-        $dados = ["texto" => $texto];
+        $repository = $this->getDoctrine()->getRepository("AppBundle:Imovel");
+        $imoveis = $repository->findAll();
+        $dados = ["imoveis" => $imoveis];
         return $this->render("imovel/lista.html.twig", $dados);
     }
 
@@ -35,7 +36,6 @@ class ImovelController extends Controller
      * @Route("/imovel/save", name="imovel_save")
      */
     public function saveAction(Request $request) {
-
         $imovel = new Imovel();
         $imovel->setTitulo($request->get("titulo"));
         $imovel->setTamanho($request->get("tamanho"));

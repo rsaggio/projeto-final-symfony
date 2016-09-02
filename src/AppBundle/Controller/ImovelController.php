@@ -42,16 +42,23 @@ class ImovelController extends Controller
      * @Method("Post");
      */
     public function saveAction(Request $request) {
+
+        $form = $this->createForm(CadastroImovelForm::class);
+        $form->handleRequest($request);
         $imovelRepository = $this->getDoctrine()->getRepository("AppBundle:Imovel");
-        $imovel = new Imovel();
-        $imovel->setTitulo($request->get("titulo"));
-        $imovel->setTamanho($request->get("tamanho"));
-        $imovel->setPreco($request->get("preco"));
-        $imovel->setTipo($request->get("tipo"));
 
-        $imoveis = $imovelRepository->save($imovel);
+        if($form->isSubmitted() && $form->isValid()) {
 
-        return $this->redirectToRoute("homepage");
+            $imovel = $form->getData();
+
+            $imovelRepository->save($imovel);
+
+            $this->addFlash('notice', 'Imovel anunciado com sucesso');
+
+            return $this->redirectToRoute('homepage');
+        }
+
+        return $this->render("imovel/form.html.twig", ["form" => $form->createView()]);
 
     }
 

@@ -1,5 +1,11 @@
 <h1>Lista de imóveis</h1>
 
+{% for flash_message in app.session.flashBag.get('notice') %}
+    <div>
+        {{ flash_message }}
+    </div>
+{% endfor %}
+
 {% for imovel in imoveis %}
     <div>
         <h2>{{imovel.titulo}}</h2>

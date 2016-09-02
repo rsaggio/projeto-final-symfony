@@ -1,7 +1,7 @@
 <?php
 
 namespace AppBundle\Repository;
-
+use AppBundle\Entity\Imovel;
 /**
  * ImovelRepository
  *
@@ -10,4 +10,10 @@ namespace AppBundle\Repository;
  */
 class ImovelRepository extends \Doctrine\ORM\EntityRepository
 {
+
+    public function save(Imovel $imovel) {
+        $entityManager = $this->getEntityManager();
+        $entityManager->persist($imovel);
+        $entityManager->flush();
+    }
 }

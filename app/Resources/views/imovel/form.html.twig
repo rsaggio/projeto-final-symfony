@@ -8,29 +8,27 @@
     <title>Cadastro de imóveis</title>
 </head>
 <body>
+    {{ form_start(form, {'action': path('imovel_save'), 'method': 'POST'}) }}
+
     <form action="/imovel/save" method="post">
+
         <div>
-            <label for="titulo">Titulo:</label>
-            <input type="text" name="titulo" id="titulo">
+            {{ form_label(form.titulo) }}
+            {{ form_widget(form.titulo) }}
         </div>
         <div>
-            <label for="tamanho">Tamanho (m²):</label>
-            <input type="number" name="tamanho" id="tamanho">
+            {{ form_label(form.tamanho) }}
+            {{ form_widget(form.tamanho) }}
         </div>
         <div>
-            <label for="preco">Preço (R$):</label>
-            <input type="text" name="preco" id="preco">
+            {{ form_label(form.preco) }}
+            {{ form_widget(form.preco) }}
         </div>
         <div>
-            <label for="tipo">Tipo:</label>
-            <select name="tipo" id="tipo">
-                <option value="c">Casa</option>
-                <option value="a">Apartamento</option>
-            </select>
+            {{ form_label(form.tipo) }}
+            {{ form_widget(form.tipo) }}
         </div>
-        <div>
-            <input type="submit" value="Anunciar imóvel">
-        </div>
-    </form>
+
+    {{ form_end(form) }}
 </body>
 </html>

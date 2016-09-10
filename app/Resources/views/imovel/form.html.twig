@@ -1,36 +1,37 @@
-<!doctype html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Cadastro de imóveis</title>
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{%block title %} Cadastro de imóveis {% endblock %}
+
+{%block body %}
+
     {{ form_start(form, {'action': path('imovel_save'), 'method': 'POST'}) }}
 
-        <div>
-            {{  form_errors(form.titulo) }}
-            {{ form_label(form.titulo) }}
-            {{ form_widget(form.titulo) }}
-        </div>
-        <div>
-            {{  form_errors(form.tamanho) }}
-            {{ form_label(form.tamanho) }}
-            {{ form_widget(form.tamanho) }}
-        </div>
-        <div>
-            {{  form_errors(form.preco) }}
-            {{ form_label(form.preco) }}
-            {{ form_widget(form.preco) }}
-        </div>
-        <div>
-            {{  form_errors(form.tipo) }}
-            {{ form_label(form.tipo) }}
-            {{ form_widget(form.tipo) }}
-        </div>
+    <div class="form-group">
+        {{  form_errors(form.titulo) }}
+        {{ form_label(form.titulo) }}
+        {{ form_widget(form.titulo, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{  form_errors(form.tamanho) }}
+        {{ form_label(form.tamanho) }}
+        {{ form_widget(form.tamanho, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{  form_errors(form.preco) }}
+        {{ form_label(form.preco) }}
+        {{ form_widget(form.preco, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{  form_errors(form.tipo) }}
+        {{ form_label(form.tipo) }}
+        {{ form_widget(form.tipo, {'attr': {'class': 'form-control'}}) }}
+    </div>
+    <div class="form-group">
+        {{  form_errors(form.foto) }}
+        {{ form_label(form.foto) }}
+        {{ form_widget(form.foto, {'attr': {'class': 'form-control'}}) }}
+    </div>
 
     {{ form_end(form) }}
-</body>
-</html>
+
+{% endblock %}
